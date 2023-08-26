@@ -1,10 +1,14 @@
 import express, { Express, Request, Response , Application } from 'express';
 import { studentRouter } from './routes/studentRouter';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 //For env File 
 dotenv.config();
 
 const app: Application = express();
+app.use(bodyParser.urlencoded());
+
+app.use(bodyParser.json());
 
 app.use('/student', studentRouter);
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import { StudentController } from '../controller/studentController';
+import { StudentController } from '../controller/StudentController';
 let studentRouter = express.Router();
 
 studentRouter.route("/signup").post(StudentController.signUp);
