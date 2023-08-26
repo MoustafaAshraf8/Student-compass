@@ -2,6 +2,7 @@ create table client
 (
    pid integer,
    universityId integer,
+   rentalId integer default null,
    constraint fk_id_client foreign key (pid) REFERENCES person(id) on delete cascade,
    constraint pk_id_client primary key (pid),
    constraint fk_universityId_client foreign key (universityId) REFERENCES university(id)
