@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'mapPage.dart';
+import 'map_page.dart';
 
 void main() {
   runApp(MaterialApp(
