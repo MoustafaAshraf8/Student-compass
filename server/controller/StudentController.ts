@@ -4,8 +4,9 @@ import { StudentService } from '../service/StudentService';
 export class StudentController{
 
    static signUp(req:Request, res:Response, next:NextFunction){
+      console.log(req.body);
       let answer:Object = StudentService.signUp();
-      res.json(answer);
+      res.json(req.body);
    }
    static signIn(req:Request, res:Response, next:NextFunction){
       let answer:Object = StudentService.signIn();
