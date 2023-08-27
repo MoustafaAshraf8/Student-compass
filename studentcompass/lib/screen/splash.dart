@@ -11,6 +11,7 @@ class Splash extends StatefulWidget {
 
 class _SplashState extends State<Splash> {
   Splashser sp = Splashser();
+  @override
   void initState() {
     super.initState();
     sp.islogin(context);
@@ -21,7 +22,7 @@ class _SplashState extends State<Splash> {
     () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => signin()),
+        MaterialPageRoute(builder: (context) => const Signin()),
       );
     };
   }

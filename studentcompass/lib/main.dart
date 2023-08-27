@@ -10,9 +10,9 @@ void main() async {
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {
-      '/': (context) => Splash(),
-      'map': (context) => MapPage(),
-      '/home_page': (context) => MyHomePage(),
+      '/': (context) => const Splash(),
+      'map': (context) => const MapPage(),
+      '/home_page': (context) => const MyHomePage(),
       // edit in routes to add pages in the project
       // !!!!!! don't make pages const !!!!!!!
     },

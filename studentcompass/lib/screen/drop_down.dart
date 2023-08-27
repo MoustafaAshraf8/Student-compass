@@ -72,7 +72,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
         ElevatedButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()));
+                  MaterialPageRoute(builder: (context) => const MyHomePage()));
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.deepPurple,

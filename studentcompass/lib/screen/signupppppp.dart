@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:studentcompass/screen/signin.dart';
@@ -5,7 +7,7 @@ import 'package:studentcompass/screen/signin.dart';
 import '../reusewidgets/reuse.dart';
 
 class Facebook extends StatefulWidget {
-  Facebook({super.key});
+  const Facebook({super.key});
 
   @override
   State<Facebook> createState() => _FacebookState();
@@ -130,14 +132,16 @@ class _FacebookState extends State<Facebook> {
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: signInSignUpButton(context, false, () {
-                  FirebaseAuth.instance
+                child: signInSignUpButton(context, false, () async {
+                  await FirebaseAuth.instance
                       .createUserWithEmailAndPassword(
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => signin()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Signin()));
                   });
                   u = _userNameTextController.text;
                 })),

@@ -4,14 +4,14 @@ import 'package:studentcompass/screen/drop_down.dart';
 import '../services/firebaseservices.dart';
 import '/screen/signin.dart';
 
-class home1 extends StatefulWidget {
-  const home1({super.key});
+class Home1 extends StatefulWidget {
+  const Home1({super.key});
 
   @override
-  State<home1> createState() => _home1State();
+  State<Home1> createState() => _Home1State();
 }
 
-class _home1State extends State<home1> {
+class _Home1State extends State<Home1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +23,17 @@ class _home1State extends State<home1> {
                   "${FirebaseAuth.instance.currentUser!.displayName}",
                   style: const TextStyle(color: Colors.white),
                 ),
-                Spacer(),
+                const Spacer(),
                 ElevatedButton(
                     child: const Icon(Icons.logout),
                     onPressed: () async {
-                      await firebaseservices().googleSignOut();
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => signin()));
+                      await FireBaseServices().googleSignOut();
+                      if (context.mounted) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Signin()));
+                      }
                     })
               ],
             )),
@@ -41,7 +45,7 @@ class _home1State extends State<home1> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => DropdownButtonApp()));
+                          builder: (context) => const DropdownButtonApp()));
                 })));
   }
 }

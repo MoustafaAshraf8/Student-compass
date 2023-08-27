@@ -7,6 +7,6 @@ class Splashser {
     Timer(
         const Duration(seconds: 3),
         () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => signin())));
+            context, MaterialPageRoute(builder: (context) => const Signin())));
   }
 }
