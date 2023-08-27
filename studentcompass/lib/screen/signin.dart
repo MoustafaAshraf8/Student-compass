@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:studentcompass/screen/signup.dart';
-import 'package:studentcompass/screen/home.dart';
+import 'package:studentcompass/screen/drop_down.dart';
 import 'package:studentcompass/screen/home1.dart';
 import 'package:studentcompass/reusewidgets/reuse.dart';
+import 'package:studentcompass/screen/signupppppp.dart';
 import '../services/firebaseservices.dart';
 
 class signin extends StatefulWidget {
@@ -56,8 +56,10 @@ class _signinState extends State<signin> {
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => home()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DropdownButtonApp()));
                   });
                 }),
                 signUpOption(),
@@ -113,7 +115,7 @@ class _signinState extends State<signin> {
         GestureDetector(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Signup()));
+                context, MaterialPageRoute(builder: (context) => Facebook()));
           },
           child: const Text(
             " Sign Up",
