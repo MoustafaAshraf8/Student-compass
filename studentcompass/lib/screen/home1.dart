@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:studentcompass/map_page.dart';
+import 'package:studentcompass/screen/drop_down.dart';
 import '../services/firebaseservices.dart';
 import '/screen/signin.dart';
 
@@ -38,8 +38,10 @@ class _home1State extends State<home1> {
             child: ElevatedButton(
                 child: const Text("choose your univ"),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MapPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DropdownButtonApp()));
                 })));
   }
 }
