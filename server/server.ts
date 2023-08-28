@@ -1,6 +1,7 @@
 import express, { Express, Request, Response , Application } from 'express';
 import { studentRouter } from './routes/studentRouter';
 import { universityRouter } from './routes/university.Router';
+import { pharmaRouter } from './routes/pharmaRouter';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 //For env File 
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 
 app.use('/student', studentRouter);
 app.use('/university', universityRouter);
+app.use("/pharmacy",pharmaRouter)
 
 
 const port = process.env.PORT || 8000;

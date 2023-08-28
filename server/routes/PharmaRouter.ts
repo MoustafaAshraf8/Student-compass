@@ -1,7 +1,7 @@
 import express from 'express';
 import { PharmaController } from '../controller/PharmaController';
-let PharmaRouter = express.Router();
+let pharmaRouter = express.Router();
 
-PharmaRouter.route("/pharma/map_page").get(PharmaController.getlocation);
+pharmaRouter.route("/pharma/map_page").get(PharmaController.getlocation);
 
-export {PharmaRouter};
+export {pharmaRouter};
