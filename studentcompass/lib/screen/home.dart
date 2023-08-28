@@ -1,17 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:studentcompass/map_page.dart';
+import 'package:studentcompass/screen/drop_down.dart';
 import '/screen/signin.dart';
 import '/screen/signup.dart';
 
-class home extends StatefulWidget {
-  const home({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<home> createState() => _homeState();
+  State<Home> createState() => _HomeState();
 }
 
-class _homeState extends State<home> {
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +23,17 @@ class _homeState extends State<home> {
                 u,
                 style: const TextStyle(color: Colors.white),
               ),
-              Spacer(),
+              const Spacer(),
               ElevatedButton(
                   child: const Icon(Icons.logout),
                   onPressed: () async {
                     await FirebaseAuth.instance.signOut();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => signin()));
+                    if (context.mounted) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Signin()));
+                    }
                   })
             ],
           ),
@@ -39,8 +43,10 @@ class _homeState extends State<home> {
             child: ElevatedButton(
                 child: const Text("choose your univ"),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MapPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DropdownButtonApp()));
                 })));
   }
 }

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "672785421320",
+    "firebase_url": "https://campuscompass-eecc8-default-rtdb.firebaseio.com",
     "project_id": "campuscompass-eecc8",
     "storage_bucket": "campuscompass-eecc8.appspot.com"
   },
@@ -9,12 +10,49 @@
       "client_info": {
         "mobilesdk_app_id": "1:672785421320:android:613de743751643ec80edbd",
         "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672785421320-0i90u98ankdl9q6du53hm2hps45ef46n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_application_1",
+            "certificate_hash": "afa0bc8a74a91448ad93d23b1bcb23241d86ac5d"
+          }
+        },
+        {
+          "client_id": "672785421320-c20gdi8rum41e0bq2ikjbr91el9cbb27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGt9gg6qMrFAP6Ob2tSI_B-CH93Q4LJAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672785421320-7eg0gf2j6ejkv1suc4qqm1dphct3o260.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672785421320:android:a78fbe7ca75e147880edbd",
+        "android_client_info": {
           "package_name": "com.example.studentcompass"
         }
       },
       "oauth_client": [
         {
-          "client_id": "672785421320-7eg0gf2j6ejkv1suc4qqm1dphct3o260.apps.googleusercontent.com",
+          "client_id": "672785421320-c20gdi8rum41e0bq2ikjbr91el9cbb27.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
