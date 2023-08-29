@@ -77,57 +77,18 @@ class _FacebookState extends State<Facebook> {
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'User name',
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: Colors.grey,
-                  ),
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                  ),
-                ),
-                style: TextStyle(color: Colors.white),
-              ),
+              child: reusableTextField("Enter UserName", Icons.person_outline,
+                  false, _userNameTextController),
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Enter email',
-                  prefixIcon: Icon(
-                    Icons.email,
-                    color: Colors.grey,
-                  ),
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                  ),
-                ),
-                style: TextStyle(color: Colors.white),
-              ),
+              child: reusableTextField("Enter Email Id", Icons.person_outline,
+                  false, _emailTextController),
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Enter password',
-                  prefixIcon: Icon(
-                    Icons.password_outlined,
-                    color: Colors.grey,
-                  ),
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                  ),
-                ),
-                style: TextStyle(color: Colors.white),
-              ),
+              child: reusableTextField("Enter Password", Icons.lock_outlined,
+                  true, _passwordTextController),
             ),
             Container(
                 height: 50,
