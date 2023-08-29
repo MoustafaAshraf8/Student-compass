@@ -8,6 +8,10 @@ import 'package:studentcompass/reusewidgets/reuse.dart';
 import 'package:studentcompass/screen/signupppppp.dart';
 import '../services/firebaseservices.dart';
 
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 class Signin extends StatefulWidget {
   const Signin({super.key});
 
@@ -16,6 +20,7 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
+  Future<User>? _futureUser;
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
 
@@ -51,18 +56,31 @@ class _SigninState extends State<Signin> {
               const SizedBox(
                 height: 20,
               ),
-              signInSignUpButton(context, true, () {
-                FirebaseAuth.instance
-                    .signInWithEmailAndPassword(
-                        email: _emailTextController.text,
-                        password: _passwordTextController.text)
-                    .then((value) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DropdownButtonApp()));
-                });
-              }),
+              // signInSignUpButton(context, true, () {
+              //   _futureUser = createUser(
+              //       _emailTextController.text, _passwordTextController.text);
+              //   print(_futureUser);
+              //   FirebaseAuth.instance
+              //       .signInWithEmailAndPassword(
+              //           email: _emailTextController.text,
+              //           password: _passwordTextController.text)
+              //       .then((value) {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const DropdownButtonApp()));
+              //   });
+              // }),
+              ElevatedButton(
+                  onPressed: () {
+                    print("-----------------");
+                    setState(() {
+                      _futureUser = createUser(_emailTextController.text,
+                          _passwordTextController.text);
+                      _futureUser!.then((value) => print(value.username));
+                    });
+                  },
+                  child: Text("signIn")),
               signUpOption(),
               const SizedBox(
                 height: 20,
@@ -125,6 +143,45 @@ class _SigninState extends State<Signin> {
           ),
         )
       ],
+    );
+  }
+}
+
+Future<User> createUser(String username, String password) async {
+  final response = await http.post(
+    Uri.parse('http://10.0.2.2:80/student/signin'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(
+        <String, String>{'username': username, 'password': password}),
+  );
+
+  print(response.statusCode);
+
+  if (response.statusCode == 200) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    print(User);
+    return User.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    print("error");
+    throw Exception('Failed to create album.');
+  }
+}
+
+class User {
+  final String username;
+  final String password;
+
+  const User({required this.username, required this.password});
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      username: json['email'],
+      password: json['password'],
     );
   }
 }
