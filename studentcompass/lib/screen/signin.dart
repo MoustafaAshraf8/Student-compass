@@ -80,7 +80,7 @@ class _SigninState extends State<Signin> {
                       _futureUser!.then((value) => print(value.username));
                     });
                   },
-                  child: Text("signIn")),
+                  child: const Text("Login")),
               signUpOption(),
               const SizedBox(
                 height: 20,

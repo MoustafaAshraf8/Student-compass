@@ -1,3 +1,6 @@
+import 'dart:ffi';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:collection';
@@ -14,7 +17,16 @@ class MapPage extends StatefulWidget {
   State<MapPage> createState() => _MapPageState();
 }
 
-HashSet<Marker> makeMarkers(List<Place> places, BuildContext context) =>
+double calculateDistance(lat1, lon1, lat2, lon2) {
+  var p = 0.017453292519943295;
+  var a = 0.5 -
+      cos((lat2 - lat1) * p) / 2 +
+      cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lon2 - lon1) * p)) / 2;
+  return 12742 * asin(sqrt(a));
+}
+
+HashSet<Marker> makeMarkers(List<Place> places, double uniLat, double uniLong,
+        BuildContext context) =>
     HashSet.of(places.map((place) => Marker(
         markerId: place.id,
         icon: place.icon,
@@ -80,6 +92,21 @@ HashSet<Marker> makeMarkers(List<Place> places, BuildContext context) =>
                             )),
                           ),
                         ),
+                        Container(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Colors.deepPurple,
+                          ),
+                          width: MediaQuery.sizeOf(context).width,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                                child: Text(
+                              '${calculateDistance(place.lat, place.long, uniLat, uniLong).toStringAsPrecision(3).toString()} KM',
+                              style: const TextStyle(fontSize: 20),
+                            )),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -93,15 +120,27 @@ HashSet<Marker> makeMarkers(List<Place> places, BuildContext context) =>
 List<RentalHome> getRentalHomes() {
   return [
     RentalHome(
-        name: "شقة فول",
+        name: "شقة 150م",
         id: const MarkerId('1'),
-        description: "شقة طرش",
+        description: "شقة غرفتين و حمام و مطبخ",
         seller: Seller(
             name: "عم خميس",
             email: "khamos@spoting.com",
             mobile: "011 1927 0023"),
         lat: 31.2001,
-        long: 29.9187)
+        long: 29.9187,
+        booked: false),
+    RentalHome(
+        name: " غرفتين و حمام ",
+        id: const MarkerId('2'),
+        description: "شقة مطرش",
+        seller: Seller(
+            name: "مش عم خميس",
+            email: "gomaa@sporting.com",
+            mobile: "011 1927 0023"),
+        lat: 31,
+        long: 29,
+        booked: true),
   ];
 }
 
@@ -155,6 +194,8 @@ class _MapPageState extends State<MapPage> {
   List<Pharma> pharmas = getPharmas();
   List<Supply> supplies = getSupplies();
 
+  double uniLat = 30.0;
+  double uniLong = 30;
   @override
   void initState() {
     super.initState();
@@ -176,7 +217,7 @@ class _MapPageState extends State<MapPage> {
             ),
             onMapCreated: (GoogleMapController googleMapController) {
               setState(() {
-                markers = makeMarkers(homes, context);
+                markers = makeMarkers(homes, uniLat, uniLong, context);
               });
             },
             markers: markers,
@@ -194,7 +235,7 @@ class _MapPageState extends State<MapPage> {
                     ),
                 onPressed: () {
                   setState(() {
-                    markers = makeMarkers(restos, context);
+                    markers = makeMarkers(restos, uniLat, uniLong, context);
                   });
                 },
                 child: const Icon(Icons.food_bank_rounded),
@@ -210,7 +251,7 @@ class _MapPageState extends State<MapPage> {
                     ),
                 onPressed: () {
                   setState(() {
-                    markers = makeMarkers(pharmas, context);
+                    markers = makeMarkers(pharmas, uniLat, uniLong, context);
                   });
                 },
                 child: const Icon(
@@ -228,7 +269,7 @@ class _MapPageState extends State<MapPage> {
                     ),
                 onPressed: () {
                   setState(() {
-                    markers = makeMarkers(homes, context);
+                    markers = makeMarkers(homes, uniLat, uniLong, context);
                   });
                 },
                 child: const Icon(
@@ -246,7 +287,7 @@ class _MapPageState extends State<MapPage> {
                     ),
                 onPressed: () {
                   setState(() {
-                    markers = makeMarkers(supplies, context);
+                    markers = makeMarkers(supplies, uniLat, uniLong, context);
                   });
                 },
                 child: const Icon(

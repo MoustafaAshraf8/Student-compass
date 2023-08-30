@@ -18,17 +18,24 @@ class Place {
 
 class RentalHome extends Place {
   getCostumeMarker() async {
-    icon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration.empty, 'mapAssets/rentalMarker.png');
+    if (booked) {
+      icon = await BitmapDescriptor.fromAssetImage(
+          ImageConfiguration.empty, 'mapAssets/rentalMarker.png');
+    } else {
+      icon = await BitmapDescriptor.fromAssetImage(
+          ImageConfiguration.empty, 'mapAssets/rentalMarkerBooked.png');
+    }
   }
 
+  bool booked;
   RentalHome(
       {required super.name,
       required super.id,
       required super.description,
       required super.seller,
       required super.lat,
-      required super.long}) {
+      required super.long,
+      required this.booked}) {
     getCostumeMarker();
   }
 }
