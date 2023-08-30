@@ -7,14 +7,24 @@ import 'map_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MaterialApp(
-    initialRoute: '/',
-    routes: {
-      '/': (context) => const Splash(),
-      'map': (context) => const MapPage(),
-      '/home_page': (context) => const MyHomePage(),
-      // edit in routes to add pages in the project
-      // !!!!!! don't make pages const !!!!!!!
-    },
-  ));
+  runApp(StartWidget());
+}
+
+class StartWidget extends StatelessWidget {
+  const StartWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Splash(),
+        '/map': (context) => const MapPage(),
+        '/home_page': (context) => const MyHomePage(),
+        // edit in routes to add pages in the project
+      },
+    );
+  }
 }

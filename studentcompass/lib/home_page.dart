@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:studentcompass/map_page.dart';
+import 'package:studentcompass/screen/signin.dart';
+import 'package:studentcompass/services/firebaseservices.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -40,14 +43,34 @@ class _MyHomePageState extends State<MyHomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        const Align(
-                          alignment: Alignment(-0.9, 0.0),
-                          child: Icon(
-                            Icons.person,
-                            color: Color(0xffffffff),
-                            size: 100,
+                        Row(children: [
+                          const Align(
+                            alignment: Alignment(-0.9, 0.0),
+                            child: Icon(
+                              Icons.person,
+                              color: Color(0xffffffff),
+                              size: 100,
+                            ),
                           ),
-                        ),
+                          //Text(
+                          //"${FirebaseAuth.instance.currentUser!.displayName}",
+                          //style: const TextStyle(
+                          //  color: Colors.white, fontSize: 20),
+                          //),
+                          const Spacer(),
+                          ElevatedButton(
+                              child: const Icon(Icons.logout),
+                              onPressed: () async {
+                                await FireBaseServices().googleSignOut();
+                                if (context.mounted) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const Signin()));
+                                }
+                              })
+                        ]),
                         const Padding(
                           padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
                           child: Align(
@@ -165,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             const Padding(
-                              padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                              padding: EdgeInsets.fromLTRB(30, 5, 0, 0),
                               child: Image(
                                 image: AssetImage('assets/images/rental.png'),
                                 height: 100,
@@ -286,11 +309,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             const Padding(
-                              padding: EdgeInsets.fromLTRB(0, 15, 10, 0),
+                              padding: EdgeInsets.fromLTRB(30, 20, 20, 0),
                               child: Image(
                                 image: AssetImage('assets/images/sup.png'),
-                                height: 100,
-                                width: 140,
+                                height: 79,
+                                width: 200,
                                 fit: BoxFit.cover,
                               ),
                             ),
