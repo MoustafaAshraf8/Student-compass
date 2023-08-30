@@ -33,80 +33,115 @@ HashSet<Marker> makeMarkers(List<Place> places, double uniLat, double uniLong,
         position: LatLng(place.lat, place.long),
         onTap: () {
           showModalBottomSheet(
+              backgroundColor: Colors.deepPurple,
               showDragHandle: true,
               useSafeArea: true,
               context: context,
               isScrollControlled: true,
+              elevation: 0.5,
               builder: (BuildContext context) {
                 return SizedBox(
-                  height: MediaQuery.sizeOf(context).height * 0.3,
+                  height: MediaQuery.sizeOf(context).height * 0.2,
                   width: MediaQuery.sizeOf(context).width,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
                         Container(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Colors.deepPurple,
-                          ),
                           width: MediaQuery.sizeOf(context).width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                                child: Text(
-                              place.seller.name,
-                              style: const TextStyle(fontSize: 20),
-                            )),
+                          alignment: Alignment.topRight,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(20)),
+                              border: Border.all(color: Colors.white),
+                            ),
+                            // width: 80,
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Text(
+                                '${calculateDistance(place.lat, place.long, uniLat, uniLong).toStringAsPrecision(3).toString()} KM',
+                                style: const TextStyle(
+                                    fontSize: 24, color: Colors.white),
+                              ),
+                            ),
                           ),
                         ),
-                        const SizedBox(height: 3),
+                        const SizedBox(height: 8),
                         Container(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Colors.deepPurple,
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: Colors.deepPurple[300],
                           ),
                           width: MediaQuery.sizeOf(context).width,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Center(
-                                child: Text(
-                              place.seller.mobile,
-                              style: const TextStyle(fontSize: 20),
+                                child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Seller: ${place.seller.name}",
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Text(
+                                  "Phone: ${place.seller.mobile}",
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Text(
+                                  "Description ${place.description}",
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             )),
                           ),
                         ),
-                        const SizedBox(height: 3),
-                        Container(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Colors.deepPurple,
-                          ),
-                          width: MediaQuery.sizeOf(context).width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                                child: Text(
-                              place.description,
-                              style: const TextStyle(fontSize: 20),
-                            )),
-                          ),
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Colors.deepPurple,
-                          ),
-                          width: MediaQuery.sizeOf(context).width,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Center(
-                                child: Text(
-                              '${calculateDistance(place.lat, place.long, uniLat, uniLong).toStringAsPrecision(3).toString()} KM',
-                              style: const TextStyle(fontSize: 20),
-                            )),
-                          ),
-                        ),
+                        // const SizedBox(height: 3),
+                        // Container(
+                        //   decoration: BoxDecoration(
+                        //     borderRadius:
+                        //         const BorderRadius.all(Radius.circular(10)),
+                        //     color: Colors.deepPurple[300],
+                        //   ),
+                        //   width: MediaQuery.sizeOf(context).width,
+                        //   child: Padding(
+                        //     padding: const EdgeInsets.all(8.0),
+                        //     child: Center(
+                        //         child: Text(
+                        //       place.seller.mobile,
+                        //       style: const TextStyle(
+                        //           fontSize: 20, color: Colors.white),
+                        //     )),
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 3),
+                        // Container(
+                        //   decoration: BoxDecoration(
+                        //     borderRadius:
+                        //         const BorderRadius.all(Radius.circular(10)),
+                        //     color: Colors.deepPurple[300],
+                        //   ),
+                        //   width: MediaQuery.sizeOf(context).width,
+                        //   child: Padding(
+                        //     padding: const EdgeInsets.all(8.0),
+                        //     child: Center(
+                        //         child: Text(
+                        //       place.description,
+                        //       style: const TextStyle(
+                        //           fontSize: 20, color: Colors.white),
+                        //     )),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -120,22 +155,22 @@ HashSet<Marker> makeMarkers(List<Place> places, double uniLat, double uniLong,
 List<RentalHome> getRentalHomes() {
   return [
     RentalHome(
-        name: "شقة 150م",
+        name: "150m apartment",
         id: const MarkerId('1'),
-        description: "شقة غرفتين و حمام و مطبخ",
+        description: "2 rooms , 1 restroom , 1 kitchen",
         seller: Seller(
-            name: "عم خميس",
+            name: "Khamis Adly",
             email: "khamos@spoting.com",
             mobile: "011 1927 0023"),
         lat: 31.2001,
         long: 29.9187,
         booked: false),
     RentalHome(
-        name: " غرفتين و حمام ",
+        name: "80m apartment",
         id: const MarkerId('2'),
-        description: "شقة مطرش",
+        description: "1 room , 1 restroom, 1 kitchen",
         seller: Seller(
-            name: "مش عم خميس",
+            name: "Mohamed Gomaa",
             email: "gomaa@sporting.com",
             mobile: "011 1927 0023"),
         lat: 31,
@@ -147,11 +182,11 @@ List<RentalHome> getRentalHomes() {
 List<Resto> getRestos() {
   return [
     Resto(
-        name: 'balba3',
+        name: 'Balbaa',
         id: const MarkerId('2'),
         description: 'meat and fish. Not very good place for vegans',
         seller: Seller(
-            name: 'الحاج بلبع',
+            name: 'Ahmed Balbaa',
             email: 'balba3@gmail.com',
             mobile: '01234567890'),
         lat: 31.22805513419555,

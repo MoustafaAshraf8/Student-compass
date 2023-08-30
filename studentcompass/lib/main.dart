@@ -18,13 +18,12 @@ class StartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/map',
+      initialRoute: '/',
       routes: {
-        // '/': (context) => const Splash(),
+        '/': (context) => const Splash(),
         '/map': (context) => const MapPage(),
         '/home_page': (context) => const MyHomePage(),
         // edit in routes to add pages in the project
-        // !!!!!! don't make pages const !!!!!!!
       },
     );
   }

@@ -75,13 +75,9 @@ class _SigninState extends State<Signin> {
                 onPressed: () {
                   print("-----------------");
                   setState(() {
-                    try {
-                      _futureUser = createUser(_emailTextController.text,
-                          _passwordTextController.text);
-                      _futureUser!.then((value) => print(value.username));
-                    } catch (e) {
-                      print(e);
-                    }
+                    _futureUser = createUser(_emailTextController.text,
+                        _passwordTextController.text);
+                    _futureUser!.then((value) => print(value.username));
 
                     Navigator.push(
                         context,

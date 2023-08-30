@@ -23,7 +23,7 @@ class _SplashState extends State<Splash> {
     () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const Signin()),
+        MaterialPageRoute(builder: (context) => Signin()),
       );
     };
   }
@@ -37,7 +37,7 @@ class _SplashState extends State<Splash> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image(
+            const Image(
               image: AssetImage('assets/images/logo.png'),
               height: 100,
               width: 140,
