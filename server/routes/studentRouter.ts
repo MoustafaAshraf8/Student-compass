@@ -6,4 +6,6 @@ studentRouter.route("/signup").post(StudentController.signUp);
 
 studentRouter.route("/signin").post(StudentController.signIn);
 
+studentRouter.route("/rent").post(StudentController.rentPlace);
+
 export {studentRouter};

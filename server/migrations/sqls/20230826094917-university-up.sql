@@ -8,6 +8,9 @@ create table university
 );
 
 insert into university
-(id, name, longtitude,latitude)
+(name, longtitude,latitude)
 values
-(1,'test',5.0,5.0);
+('Arab Academy for science and technology (Aboqir)',31.40521, 30.39347),
+('Faculty of Engineering(Alexandria University)',31.20649, 29.92528),
+('College complex (ALexandria University)',31.20742, 29.91082),
+('Medical College complex (Alexandria University)',31.20228, 29.90422)

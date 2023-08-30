@@ -4,6 +4,10 @@ import { universityRouter } from './routes/university.Router';
 import { pharmaRouter } from './routes/pharmaRouter';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import { allowedNodeEnvironmentFlags } from 'process';
+import { workerData } from 'worker_threads';
+import { addScopeOptionsGetter } from 'sequelize-typescript';
+import { isAsExpression } from 'typescript';
 //For env File 
 dotenv.config();
 
@@ -15,7 +19,6 @@ app.use(bodyParser.json());
 app.use('/student', studentRouter);
 app.use('/university', universityRouter);
 app.use("/pharmacy",pharmaRouter)
-
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
