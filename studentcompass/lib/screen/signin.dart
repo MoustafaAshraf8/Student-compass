@@ -72,19 +72,27 @@ class _SigninState extends State<Signin> {
               //   });
               // }),
               ElevatedButton(
-                  onPressed: () {
-                    print("-----------------");
-                    setState(() {
+                onPressed: () {
+                  print("-----------------");
+                  setState(() {
+                    try {
                       _futureUser = createUser(_emailTextController.text,
                           _passwordTextController.text);
                       _futureUser!.then((value) => print(value.username));
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const DropdownButtonApp()));
-                    });
-                  },
-                  child: Text("Login")),
+                    } catch (e) {
+                      print(e);
+                    }
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DropdownButtonApp()));
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple[300]),
+                child: const Text("Login"),
+              ),
               signUpOption(),
               const SizedBox(
                 height: 20,
@@ -154,28 +162,33 @@ class _SigninState extends State<Signin> {
 }
 
 Future<User> createUser(String username, String password) async {
-  final response = await http.post(
-    Uri.parse('http://10.0.2.2:80/student/signin'),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(
-        <String, String>{'username': username, 'password': password}),
-  );
+  try {
+    final response = await http.post(
+      Uri.parse('http://10.0.2.2:80/student/signin'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(
+          <String, String>{'username': username, 'password': password}),
+    );
 
-  print(response.statusCode);
+    print(response.statusCode);
 
-  if (response.statusCode == 200) {
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
-    print(User);
-    return User.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    print("error");
-    throw Exception('Failed to create album.');
+    if (response.statusCode == 200) {
+      // If the server did return a 201 CREATED response,
+      // then parse the JSON.
+      print(User);
+      return User.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      print("error");
+      throw Exception('Failed to create album.');
+    }
+  } catch (e) {
+    print(e);
   }
+  return Future<User>.value(const User(username: 'NaN', password: 'NaN'));
 }
 
 class User {
