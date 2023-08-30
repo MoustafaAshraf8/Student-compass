@@ -78,9 +78,13 @@ class _SigninState extends State<Signin> {
                       _futureUser = createUser(_emailTextController.text,
                           _passwordTextController.text);
                       _futureUser!.then((value) => print(value.username));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const DropdownButtonApp()));
                     });
                   },
-                  child: Text("signIn")),
+                  child: Text("Login")),
               signUpOption(),
               const SizedBox(
                 height: 20,
@@ -89,8 +93,10 @@ class _SigninState extends State<Signin> {
                 onPressed: () async {
                   await FireBaseServices().signInWithGoogle();
                   if (context.mounted) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Home1()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DropdownButtonApp()));
                   }
                 },
                 style: ButtonStyle(backgroundColor:
