@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:studentcompass/map_page.dart';
 import 'package:studentcompass/screen/signin.dart';

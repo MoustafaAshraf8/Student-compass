@@ -1,9 +1,6 @@
 // ignore_for_file: prefer_final_fields
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:studentcompass/screen/drop_down.dart';
-import 'package:studentcompass/screen/home1.dart';
 import 'package:studentcompass/reusewidgets/reuse.dart';
 import 'package:studentcompass/screen/signupppppp.dart';
 import '../services/firebaseservices.dart';

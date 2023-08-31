@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -7,9 +6,6 @@ import 'dart:collection';
 
 import 'map_classes.dart';
 
-// 31.211029964261222, 29.937032121439096
-// 31.233049781964777, 29.969991105710832
-// 31.22805513419555, 29.942273991797162 balbaa
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
 

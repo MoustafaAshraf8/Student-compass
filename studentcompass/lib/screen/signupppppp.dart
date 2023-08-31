@@ -59,21 +59,8 @@ class _FacebookState extends State<Facebook> {
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Full name',
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: Colors.grey,
-                  ),
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                  ),
-                ),
-                style: TextStyle(color: Colors.white),
-              ),
+              child: reusableTextField("Enter FullName", Icons.person_outline,
+                  false, _userNameTextController),
             ),
             Container(
               padding: const EdgeInsets.all(10),
@@ -91,8 +78,10 @@ class _FacebookState extends State<Facebook> {
                   true, _passwordTextController),
             ),
             Container(
-                height: 50,
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                height: 70,
+                width: 50,
+                // color: Colors.amber,
+                padding: const EdgeInsets.fromLTRB(110, 0, 110, 0),
                 child: signInSignUpButton(context, false, () async {
                   await FirebaseAuth.instance
                       .createUserWithEmailAndPassword(
