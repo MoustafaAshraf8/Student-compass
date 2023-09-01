@@ -4,12 +4,9 @@ import { PharmacyService } from '../service/PharmacyService';
 export class PharmacyController{
 
    static async getAllPharmacy(req:Request, res:Response, next:NextFunction){
-      let answer:Object = await PharmacyService.getAllPharmacy();
-      if(Object(Array(answer)).id){
-         res.status(200);
-      }else{
-         res.status(404);
-      }
+      let answer = await PharmacyService.getAllPharmacy();
+      console.log(answer[0].place_name);
+      res.statusCode = 200;
       res.json(answer);
    }
 }

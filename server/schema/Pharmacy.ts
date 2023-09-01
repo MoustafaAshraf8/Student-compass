@@ -13,14 +13,14 @@ export class Pharmacy{
        this.latitude=latitude;
    }
 
-   static async getAllPharmacy(){
+   static async getAllPharmacy(): Promise<string>{
       const query = PharmacyQuery.getAllPharmacyQuery();
       try{
          let result = await pool.query(query);
          //delete Object(Object(result).rows).pid;
-         return result.rows;
+         return JSON.stringify(result.rows);
       }catch(error){
-         return {msg:error}
+         throw error;
       }
    }
 

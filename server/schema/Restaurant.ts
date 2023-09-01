@@ -15,7 +15,7 @@ export class Restaurant{
       this.description=description;
    }
 
-   public static async getAllRestaurant(){
+   public static async getAllRestaurant(): Promise<string>{
       const query = RestaurantQuery.getAllRestaurantQuery();
 
       try{
