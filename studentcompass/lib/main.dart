@@ -18,7 +18,7 @@ class StartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
+      initialRoute: '/map',
       routes: {
         '/': (context) => const MapPage(),
         // '/map': (context) => const MapPage(),
