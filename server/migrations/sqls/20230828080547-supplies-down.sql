@@ -1,1 +1,1 @@
-drop table supplies;
+drop table supply;

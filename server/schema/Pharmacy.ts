@@ -1,5 +1,5 @@
 import {pool} from '../config/config';
-
+import { PharmacyQuery } from './sql/Pharmacy_query';
 export class Pharmacy{
    private pid:number;
    private name:string;
@@ -14,7 +14,7 @@ export class Pharmacy{
    }
 
    static async getAllPharmacy(){
-      const query = `select * from place inner join pharmacy on place.id=pharmacy.pid;`;
+      const query = PharmacyQuery.getAllPharmacyQuery();
       try{
          let result = await pool.query(query);
          //delete Object(Object(result).rows).pid;

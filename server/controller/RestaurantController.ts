@@ -3,9 +3,11 @@ import { RestaurantService } from '../service/RestaurantService';
 
 export class RestaurantController{
 
-   static getlocation(req:Request, res:Response, next:NextFunction){
-      console.log(req.body);
-      let answer:Object = RestaurantService.getlocation();
-      res.json(req.body);
+   public static async getAllRestaurant(req:Request, res:Response, next:NextFunction){
+      let answer = await RestaurantService.getAllRestaurant();
+      console.log(typeof(answer));
+      console.log(answer[0].place_name);
+      res.statusCode = 200;
+      res.json(answer);
    }
 }

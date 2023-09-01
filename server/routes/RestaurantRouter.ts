@@ -1,7 +1,7 @@
 import express from 'express';
 import { RestaurantController } from '../controller/RestaurantController';
-let RestaurantRouter = express.Router();
+let restaurantRouter = express.Router();
 
-RestaurantRouter.route("/restaurants/map_page").get(RestaurantController.getlocation);
+restaurantRouter.route("/").get(RestaurantController.getAllRestaurant);
 
-export {RestaurantRouter};
+export {restaurantRouter};

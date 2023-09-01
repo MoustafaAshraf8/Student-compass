@@ -3,6 +3,8 @@ import { studentRouter } from './routes/studentRouter';
 import { universityRouter } from './routes/university.Router';
 import { pharmacyRouter } from './routes/pharmacyRouter';
 import { rentalHomeRouter } from './routes/rentalHomeRouter';
+import { supplyRouter } from './routes/supplyRouter';
+import { restaurantRouter } from './routes/restaurantRouter';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import { allowedNodeEnvironmentFlags } from 'process';
@@ -21,6 +23,8 @@ app.use('/student', studentRouter);
 app.use('/place/university', universityRouter);
 app.use("/place/pharmacy",pharmacyRouter);
 app.use("/place/rentalhome",rentalHomeRouter);
+app.use("/place/supply",supplyRouter);
+app.use("/place/restaurant",restaurantRouter);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
