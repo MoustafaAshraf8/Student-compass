@@ -9,7 +9,10 @@ import 'map_classes.dart';
 import './makeMarker.dart';
 import '../../schema/rentalHomeSchema/getRentalHome.dart';
 import '../../schema/restaurantSchema/getRestaurant.dart';
+import '../../schema/pharmacySchema/getPharmacy.dart';
 //import '../../schema/rentalHomeSchema/RentaHome.dart';
+
+import './FloatingBtn.dart';
 
 // 31.211029964261222, 29.937032121439096
 // 31.233049781964777, 29.969991105710832
@@ -100,21 +103,21 @@ class _MapPageState extends State<MapPage> {
 
   late List<RentalHome> futureRental = [];
   late List<Resto> futureRestaurant = [];
-  late Future<List<Pharma>> futurePharmacy;
-  late Future<List<Supply>> futureLibrary;
+  late List<Pharma> futurePharmacy = [];
+  late List<Supply> futureSupply = [];
   int test = 0;
   double uniLat = 30.0;
   double uniLong = 30;
   @override
   void initState() {
     super.initState();
-    this.loadRentalHome();
+    loadRentalHome();
   }
 
   void loadRentalHome() async {
     futureRental = await getRentalHome();
     setState(() {
-      this.markers = makeMarkers(futureRental, uniLat, uniLong, context,
+      markers = makeMarkers(futureRental, uniLat, uniLong, context,
           BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen));
     });
   }
@@ -122,8 +125,16 @@ class _MapPageState extends State<MapPage> {
   void loadRestaurant() async {
     futureRestaurant = await getRestaurant();
     setState(() {
-      this.markers = makeMarkers(futureRestaurant, uniLat, uniLong, context,
+      markers = makeMarkers(futureRestaurant, uniLat, uniLong, context,
           BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue));
+    });
+  }
+
+  void loadPharmacy() async {
+    futurePharmacy = await getPharmacy();
+    setState(() {
+      markers = makeMarkers(futurePharmacy, uniLat, uniLong, context,
+          BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueOrange));
     });
   }
 
@@ -136,19 +147,18 @@ class _MapPageState extends State<MapPage> {
       ),
       body: Stack(
         children: [
-          this.futureRental.isNotEmpty
+          futureRental.isNotEmpty
               ? GoogleMap(
                   initialCameraPosition: const CameraPosition(
                     target: LatLng(31.2001, 29.9187),
                     zoom: 10,
                   ),
                   onMapCreated: (GoogleMapController googleMapController) {
-                    //this.loadRentalHome();
-                    this.loadRestaurant();
+                    loadRentalHome();
                   },
                   markers: markers,
                 )
-              : Center(
+              : const Center(
                   child: CircularProgressIndicator(),
                 ),
           Column(
@@ -156,69 +166,75 @@ class _MapPageState extends State<MapPage> {
               const SizedBox(
                 height: 10,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(14) // Background color
-                    ),
-                onPressed: () {
-                  this.loadRestaurant();
-                },
-                child: const Icon(Icons.food_bank_rounded),
-              ),
+              // ElevatedButton(
+              //   style: ElevatedButton.styleFrom(
+              //       backgroundColor: Colors.deepPurple,
+              //       shape: const CircleBorder(),
+              //       padding: const EdgeInsets.all(14) // Background color
+              //       ),
+              //   onPressed: () {
+              //     loadRestaurant();
+              //   },
+              //   child: const Icon(Icons.food_bank_rounded),
+              // ),
+              FloatingBtn(
+                  function: loadRestaurant,
+                  icon: const Icon(Icons.food_bank_rounded)),
               const SizedBox(
                 height: 10,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(14) // Background color
-                    ),
-                onPressed: () {
-                  setState(() {
-                    //markers = makeMarkers(pharmas, uniLat, uniLong, context);
-                  });
-                },
-                child: const Icon(
-                  Icons.local_pharmacy,
-                ),
-              ),
+              // ElevatedButton(
+              //   style: ElevatedButton.styleFrom(
+              //       backgroundColor: Colors.deepPurple,
+              //       shape: const CircleBorder(),
+              //       padding: const EdgeInsets.all(14) // Background color
+              //       ),
+              //   onPressed: () {
+              //     loadPharmacy();
+              //   },
+              //   child: const Icon(
+              //     Icons.local_pharmacy,
+              //   ),
+              // ),
+              FloatingBtn(
+                  function: loadPharmacy, icon: Icon(Icons.local_pharmacy)),
               const SizedBox(
                 height: 10,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(14) // Background color
-                    ),
-                onPressed: () {
-                  this.loadRentalHome();
-                },
-                child: const Icon(
-                  Icons.home,
-                ),
-              ),
+              // ElevatedButton(
+              //   style: ElevatedButton.styleFrom(
+              //       backgroundColor: Colors.deepPurple,
+              //       shape: const CircleBorder(),
+              //       padding: const EdgeInsets.all(14) // Background color
+              //       ),
+              //   onPressed: () {
+              //     loadRentalHome();
+              //   },
+              //   child: const Icon(
+              //     Icons.home,
+              //   ),
+              // ),
+              FloatingBtn(function: loadRentalHome, icon: Icon(Icons.home)),
               const SizedBox(
                 height: 10,
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(14) // Background color
-                    ),
-                onPressed: () {
-                  setState(() {
-                    // markers = makeMarkers(supplies, uniLat, uniLong, context);
-                  });
-                },
-                child: const Icon(
-                  Icons.shopify_outlined,
-                ),
-              ),
+              // ElevatedButton(
+              //   style: ElevatedButton.styleFrom(
+              //       backgroundColor: Colors.deepPurple,
+              //       shape: const CircleBorder(),
+              //       padding: const EdgeInsets.all(14) // Background color
+              //       ),
+              //   onPressed: () {
+              //     setState(() {
+              //       // markers = makeMarkers(supplies, uniLat, uniLong, context);
+              //     });
+              //   },
+              //   child: const Icon(
+              //     Icons.shopify_outlined,
+              //   ),
+              // ),
+              FloatingBtn(
+                  function: loadRestaurant, icon: Icon(Icons.shopify_outlined))
             ],
           ),
         ],
