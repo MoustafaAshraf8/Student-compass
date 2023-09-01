@@ -8,6 +8,8 @@ import 'dart:collection';
 import 'map_classes.dart';
 import './makeMarker.dart';
 import '../../schema/rentalHomeSchema/getRentalHome.dart';
+import '../../schema/restaurantSchema/getRestaurant.dart';
+//import '../../schema/rentalHomeSchema/RentaHome.dart';
 
 // 31.211029964261222, 29.937032121439096
 // 31.233049781964777, 29.969991105710832
@@ -97,7 +99,7 @@ class _MapPageState extends State<MapPage> {
   // List<Supply> supplies = getSupplies();
 
   late List<RentalHome> futureRental = [];
-  late Future<List<Resto>> futureRestaurant;
+  late List<Resto> futureRestaurant = [];
   late Future<List<Pharma>> futurePharmacy;
   late Future<List<Supply>> futureLibrary;
   int test = 0;
@@ -110,21 +112,19 @@ class _MapPageState extends State<MapPage> {
   }
 
   void loadRentalHome() async {
-    List<RentalHome> result = await getRentalHome();
-    this.markers = makeMarkers(result, uniLat, uniLong, context);
-    this.fn(result: result);
+    futureRental = await getRentalHome();
+    setState(() {
+      this.markers = makeMarkers(futureRental, uniLat, uniLong, context,
+          BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen));
+    });
   }
 
-  void fn({required result}) {
-    print('=======================');
-    print(markers.length);
+  void loadRestaurant() async {
+    futureRestaurant = await getRestaurant();
     setState(() {
-      this.test = 1;
-      this.futureRental = result;
+      this.markers = makeMarkers(futureRestaurant, uniLat, uniLong, context,
+          BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue));
     });
-
-    print(futureRental.length);
-    print('=======================');
   }
 
   @override
@@ -143,7 +143,8 @@ class _MapPageState extends State<MapPage> {
                     zoom: 10,
                   ),
                   onMapCreated: (GoogleMapController googleMapController) {
-                    this.loadRentalHome();
+                    //this.loadRentalHome();
+                    this.loadRestaurant();
                   },
                   markers: markers,
                 )
@@ -162,9 +163,7 @@ class _MapPageState extends State<MapPage> {
                     padding: const EdgeInsets.all(14) // Background color
                     ),
                 onPressed: () {
-                  setState(() {
-                    //markers = makeMarkers(restos, uniLat, uniLong, context);
-                  });
+                  this.loadRestaurant();
                 },
                 child: const Icon(Icons.food_bank_rounded),
               ),
@@ -214,7 +213,6 @@ class _MapPageState extends State<MapPage> {
                 onPressed: () {
                   setState(() {
                     // markers = makeMarkers(supplies, uniLat, uniLong, context);
-                    print('hhhhhhhooooooommmmmmmmmeeeeeeeeee');
                   });
                 },
                 child: const Icon(

@@ -15,8 +15,8 @@ double calculateDistance(lat1, lon1, lat2, lon2) {
   return 12742 * asin(sqrt(a));
 }
 
-HashSet<Marker> makeMarkers(
-    List<Place> places, double uniLat, double uniLong, BuildContext context) {
+HashSet<Marker> makeMarkers(List<Place> places, double uniLat, double uniLong,
+    BuildContext context, BitmapDescriptor icon) {
   print("!!!!!!!!!!!!");
   print(places[0].longtitude);
   print(places[0].latitude);
@@ -28,7 +28,7 @@ HashSet<Marker> makeMarkers(
 
   return HashSet.of(places.map((place) => Marker(
       markerId: place.id,
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+      icon: icon,
       position: LatLng(place.latitude, place.longtitude),
       onTap: () {
         showModalBottomSheet(

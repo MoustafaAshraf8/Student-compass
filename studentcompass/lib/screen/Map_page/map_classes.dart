@@ -48,7 +48,7 @@ class RentalHome extends Place {
 }
 
 class Resto extends Place {
-  getCostumeMarker() async {
+  void getCostumeMarker() async {
     icon = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration.empty, 'mapAssets/restoMarker2.png');
   }
@@ -60,7 +60,7 @@ class Resto extends Place {
       required super.seller,
       required super.latitude,
       required super.longtitude}) {
-    getCostumeMarker();
+    //getCostumeMarker();
   }
 }
 

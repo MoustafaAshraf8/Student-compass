@@ -21,7 +21,7 @@ class StartWidget extends StatelessWidget {
       initialRoute: '/map',
       routes: {
         '/': (context) => const MapPage(),
-        // '/map': (context) => const MapPage(),
+        '/map': (context) => const MapPage(),
         // '/home_page': (context) => const MyHomePage(),
         // edit in routes to add pages in the project
       },
