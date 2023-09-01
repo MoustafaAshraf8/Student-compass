@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import '/screen/signin.dart';
+import 'SignIn_page/signin.dart';
 import '/services/splashser.dart';
 
 class Splash extends StatefulWidget {

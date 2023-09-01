@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Place {
   String name, description;
-  double lat, long;
+  double latitude, longtitude;
   Seller seller;
   MarkerId id;
   late BitmapDescriptor icon;
@@ -12,12 +12,20 @@ class Place {
       required this.id,
       required this.description,
       required this.seller,
-      required this.lat,
-      required this.long});
+      required this.latitude,
+      required this.longtitude}) {
+    this.getCostumeMarker();
+  }
+
+  getCostumeMarker() async {
+    this.icon = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration.empty, 'mapAssets/supplyMarker.png');
+  }
 }
 
 class RentalHome extends Place {
-  getCostumeMarker() async {
+  bool booked;
+  void getCostumeMarker() async {
     if (booked) {
       icon = await BitmapDescriptor.fromAssetImage(
           ImageConfiguration.empty, 'mapAssets/rentalMarker.png');
@@ -27,16 +35,15 @@ class RentalHome extends Place {
     }
   }
 
-  bool booked;
   RentalHome(
       {required super.name,
       required super.id,
       required super.description,
       required super.seller,
-      required super.lat,
-      required super.long,
+      required super.latitude,
+      required super.longtitude,
       required this.booked}) {
-    getCostumeMarker();
+    //getCostumeMarker();
   }
 }
 
@@ -51,8 +58,8 @@ class Resto extends Place {
       required super.id,
       required super.description,
       required super.seller,
-      required super.lat,
-      required super.long}) {
+      required super.latitude,
+      required super.longtitude}) {
     getCostumeMarker();
   }
 }
@@ -68,8 +75,8 @@ class Pharma extends Place {
       required super.id,
       required super.description,
       required super.seller,
-      required super.lat,
-      required super.long}) {
+      required super.latitude,
+      required super.longtitude}) {
     getCostumeMarker();
   }
 }
@@ -85,8 +92,8 @@ class Supply extends Place {
       required super.id,
       required super.description,
       required super.seller,
-      required super.lat,
-      required super.long}) {
+      required super.latitude,
+      required super.longtitude}) {
     getCostumeMarker();
   }
 }

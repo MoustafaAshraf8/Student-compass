@@ -1,23 +1,36 @@
 // ignore_for_file: prefer_final_fields
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:studentcompass/reusewidgets/ReuableButton.dart';
 import 'package:studentcompass/screen/SignIn_page/signin.dart';
 
-import '../reusewidgets/reuse.dart';
+import '../../../reusewidgets/reuse.dart';
+import '../../../schema/userSchema/User.dart';
+import '../../../schema/userSchema/createUser.dart';
 
-class Facebook extends StatefulWidget {
-  const Facebook({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<Facebook> createState() => _FacebookState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _FacebookState extends State<Facebook> {
+class _SignUpState extends State<SignUp> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _userNameTextController = TextEditingController();
+  TextEditingController _nameTextController = TextEditingController();
   String u = "";
+  Future<User>? _futureUser;
+
+  void signUpUser() {
+    setState(() {
+      print(this._nameTextController.text);
+      this._futureUser = createUser(
+          name: this._nameTextController.text,
+          email: this._emailTextController.text,
+          password: this._passwordTextController.text);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,35 +90,41 @@ class _FacebookState extends State<Facebook> {
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: reusableTextField("Enter UserName", Icons.person_outline,
-                  false, _userNameTextController),
+              child: reusableTextField(
+                  "Name", Icons.email, false, _nameTextController),
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: reusableTextField("Enter Email Id", Icons.person_outline,
-                  false, _emailTextController),
+              child: reusableTextField(
+                  "Email", Icons.person_outline, false, _emailTextController),
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: reusableTextField("Enter Password", Icons.lock_outlined,
-                  true, _passwordTextController),
+              child: reusableTextField("Password", Icons.lock_outlined, true,
+                  _passwordTextController),
             ),
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: signInSignUpButton(context, false, () async {
-                  await FirebaseAuth.instance
-                      .createUserWithEmailAndPassword(
-                          email: _emailTextController.text,
-                          password: _passwordTextController.text)
-                      .then((value) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Signin()));
-                  });
-                  u = _userNameTextController.text;
-                })),
+                child: ReusableButton(
+                    context: context,
+                    text: const Text("SIGN Up"),
+                    isLogin: false,
+                    onTap: this.signUpUser
+                    //() async {
+                    // await FirebaseAuth.instance
+                    //     .createUserWithEmailAndPassword(
+                    //         email: _emailTextController.text,
+                    //         password: _passwordTextController.text)
+                    //     .then((value) {
+                    //   Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //           builder: (context) => const Signin()));
+                    // });
+                    // u = _nameTextController.text;
+                    //}
+                    )),
           ],
         ),
       ),

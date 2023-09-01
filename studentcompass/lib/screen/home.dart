@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:studentcompass/screen/drop_down.dart';
-import '/screen/signin.dart';
+import 'SignIn_page/signin.dart';
 import '/screen/signup.dart';
 
 class Home extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:studentcompass/map_page.dart';
-import 'package:studentcompass/screen/signin.dart';
+import 'package:studentcompass/screen/Map_page/map_page.dart';
+import 'package:studentcompass/screen/SignIn_page/signin.dart';
 import 'package:studentcompass/services/firebaseservices.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -25,11 +25,13 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
+                  // width: double.infinity,
+                  // height: double.infinity,
                   width: 500,
-                  height: 300,
+                  height: 200,
                   decoration: BoxDecoration(
                     color: const Color(0xff7f2096),
-                    shape: BoxShape.rectangle,
+                    //shape: BoxShape.rectangle,
                     borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(20.0),
                         bottomRight: Radius.circular(20.0)),
