@@ -8,11 +8,11 @@ import 'package:dio/dio.dart';
 
 import '../../screen/Map_page/map_classes.dart';
 
-Future<List<Pharma>> getPharmacy() async {
+Future<List<Supply>> getSypply() async {
   try {
     final dio = Dio();
     dio.options.responseType = ResponseType.plain;
-    final response = await dio.get('http://10.0.2.2:80/place/pharmacy');
+    final response = await dio.get('http://10.0.2.2:80/place/supply');
 
     // print(response.statusCode);
     // print(response.data);
@@ -21,33 +21,33 @@ Future<List<Pharma>> getPharmacy() async {
       // then parse the JSON.
       var jsonResponse = jsonDecode(response.data);
       //print(jsonResponse);
-      List<Pharma> pharmacies = [];
-      for (var p in jsonResponse) {
-        Pharma pharma = Pharma(
+      List<Supply> supplies = [];
+      for (var s in jsonResponse) {
+        Supply supply = Supply(
           id: MarkerId((Random().nextInt(100).abs()).toString()),
-          name: p['place_name'],
+          name: s['place_name'],
           description: "default description",
           seller: Seller(
-              name: p['person_name'],
-              email: p['person_email'],
+              name: s['person_name'],
+              email: s['person_email'],
               mobile: '0123456798'),
-          longtitude: (p['place_longtitude']).toDouble(),
-          latitude: (p['place_latitude']).toDouble(),
+          longtitude: (s['place_longtitude']).toDouble(),
+          latitude: (s['place_latitude']).toDouble(),
         );
 
-        pharmacies.add(pharma);
+        supplies.add(supply);
       }
-      print(pharmacies);
-      return pharmacies;
+      print(supplies);
+      return supplies;
     } else {
       // If the server did not return a 201 CREATED response,
       // then throw an exception.
       print(response.data);
-      throw Exception('Failed to retrieve pharmacies.');
+      throw Exception('Failed to retrieve supplies.');
     }
   } catch (e) {
     print("*****************");
     print(e);
-    throw Exception('Failed to load pharmacies.');
+    throw Exception('Failed to load supplies.');
   }
 }
