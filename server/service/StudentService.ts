@@ -4,9 +4,9 @@ import { User_interface } from '../interface/User_interface';
 import { SignIn_interface } from '../interface/SignIn_interface';
 export class StudentService{
    static async signUp(userInfo:User_interface){
-      const newUser:User = new User(userInfo);
+      const newUser:User = new User(userInfo.name,userInfo.email,userInfo.password,userInfo.universityId);
       let result = await newUser.signup();
-      return {msg:result};
+      return result;
    }
 
    static async signIn(userInfo:SignIn_interface){

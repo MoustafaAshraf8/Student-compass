@@ -1,1 +1,1 @@
-drop table rental;
+drop table rentalhome;

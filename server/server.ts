@@ -1,7 +1,8 @@
 import express, { Express, Request, Response , Application } from 'express';
 import { studentRouter } from './routes/studentRouter';
 import { universityRouter } from './routes/university.Router';
-import { pharmaRouter } from './routes/pharmaRouter';
+import { pharmacyRouter } from './routes/pharmacyRouter';
+import { rentalHomeRouter } from './routes/rentalHomeRouter';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import { allowedNodeEnvironmentFlags } from 'process';
@@ -17,8 +18,9 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 app.use('/student', studentRouter);
-app.use('/university', universityRouter);
-app.use("/pharmacy",pharmaRouter)
+app.use('/place/university', universityRouter);
+app.use("/place/pharmacy",pharmacyRouter);
+app.use("/place/rentalhome",rentalHomeRouter);
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => {

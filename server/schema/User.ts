@@ -1,29 +1,42 @@
 import {pool} from '../config/config';
 import { User_interface } from '../interface/User_interface';
 import { SignIn_interface } from '../interface/SignIn_interface';
+import { type } from 'os';
+import { Encryptor } from '../utilities/Encryptor';
 export class User{
-   private user:User_interface;
+   private name:string;
+   private email:string;
+   private password:string;
+   private universityId:number;
 
-   constructor(user:User_interface){
-      this.user = user
+   constructor(name:string,
+      email:string,
+      password:string,
+      universityId:number){
+      this.name = name;
+      this.email = email;
+      this.password = password;
+      this.universityId = universityId;
    }
 
    public async signup() {
-      
-      const query = `insert into client
-      (pid,universityId)
-      values
-      (
-         (insert into person (name,email,password) values ('${this.user.name}','${this.user.email}','${this.user.password}') returning id;),
-         ${this.user.universityId}
-      ) returning *;`;
+      this.password = await Encryptor.hashPassword(this.password);
+      const query = `
+      begin;
+      insert into person (name,email,password) values ('${this.name}','${this.email}','${this.password}');
+      insert into client (pid) values((SELECT currval(pg_get_serial_sequence('person','id'))));
+      insert into payment (pid) values ((SELECT currval(pg_get_serial_sequence('person','id'))));
+      select * from client where pid=(SELECT currval(pg_get_serial_sequence('person','id')));
+      commit;`;
       try{
          let result = await pool.query(query);
-         console.log(result.rows);
-         return result.rows;
+         console.log('##############');
+         console.log(Object(Object(result)['4'])['rows']);
+         console.log('##############');
+         return Object(Object(result)['4'])['rows'];
       }catch(error){
          console.log(error);
-         return error;
+         return {msg:error};
       }
    }
 
@@ -36,6 +49,9 @@ export class User{
 
       try{
          let answer = await pool.query(query);
+         console.log('##############');
+         console.log(answer);
+         console.log('##############');
          return answer.rows[0];
       }catch(error){
          return {

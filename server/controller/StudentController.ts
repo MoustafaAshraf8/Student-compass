@@ -7,16 +7,23 @@ import { SignIn_interface } from '../interface/SignIn_interface';
 export class StudentController{
 
    static async signUp(req:Request, res:Response, next:NextFunction){
-      console.log(req.body);
       const userInfo:User_interface = {
          name:req.body.name,
          email:req.body.email,
          password:req.body.password,
-         universityId:Number(req.body.universityId)
+         universityId: req.body.universityId == undefined ? 1 : Number(req.body.universityId)
       }
-       
-      let result =await StudentService.signUp(userInfo);
-      res.json(result);
+       console.log(userInfo);
+       let answer =await StudentService.signUp(userInfo);
+       if(Array(answer)[0].id){
+
+         //generate jwt
+          res.statusCode = 200;
+         }else{
+            res.statusCode = 401
+         }
+      console.log(answer);
+      res.json(answer);
    }
 
    static async signIn(req:Request, res:Response, next:NextFunction){

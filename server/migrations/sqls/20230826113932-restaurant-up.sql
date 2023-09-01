@@ -8,7 +8,7 @@ create table restaurant
    constraint fk_categoryid_restaurant foreign key (categoryid) references restcategory(id)
 );
 
-insert into restaurant
-(pid)
-values
-(8);
+-- insert into restaurant
+-- (pid)
+-- values
+-- (8);
