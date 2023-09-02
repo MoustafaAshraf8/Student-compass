@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:studentcompass/screen/SignIn_page/signin.dart';
+import 'package:studentcompass/screen/SignIn_page/Signin.dart';
 
 import '../reusewidgets/reuse.dart';
 

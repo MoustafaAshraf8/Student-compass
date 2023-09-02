@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:studentcompass/reusewidgets/ReuableButton.dart';
-import 'package:studentcompass/screen/SignIn_page/signin.dart';
-
+import 'package:studentcompass/screen/SignIn_page/Signin.dart';
+import '../../Map_page/MapPage.dart';
 import '../../../reusewidgets/reuse.dart';
 import '../../../schema/userSchema/User.dart';
 import '../../../schema/userSchema/createUser.dart';
@@ -24,11 +24,11 @@ class _SignUpState extends State<SignUp> {
 
   void signUpUser() {
     setState(() {
-      print(this._nameTextController.text);
-      this._futureUser = createUser(
-          name: this._nameTextController.text,
-          email: this._emailTextController.text,
-          password: this._passwordTextController.text);
+      print(_nameTextController.text);
+      _futureUser = createUser(
+          name: _nameTextController.text,
+          email: _emailTextController.text,
+          password: _passwordTextController.text);
     });
   }
 
@@ -91,26 +91,26 @@ class _SignUpState extends State<SignUp> {
             Container(
               padding: const EdgeInsets.all(10),
               child: reusableTextField(
-                  "Name", Icons.email, false, _nameTextController),
+                  "Name", Icons.person, false, _nameTextController),
             ),
             Container(
               padding: const EdgeInsets.all(10),
               child: reusableTextField(
-                  "Email", Icons.person_outline, false, _emailTextController),
+                  "Email", Icons.email, false, _emailTextController),
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: reusableTextField("Password", Icons.lock_outlined, true,
-                  _passwordTextController),
+              child: reusableTextField(
+                  "Password", Icons.lock, true, _passwordTextController),
             ),
             Container(
-                height: 50,
+                height: 80,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: ReusableButton(
                     context: context,
                     text: const Text("SIGN Up"),
                     isLogin: false,
-                    onTap: this.signUpUser
+                    onTap: signUpUser
                     //() async {
                     // await FirebaseAuth.instance
                     //     .createUserWithEmailAndPassword(

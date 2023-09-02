@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:studentcompass/screen/Map_page/map_page.dart';
-import 'package:studentcompass/screen/SignIn_page/signin.dart';
+import 'package:studentcompass/screen/Map_page/MapPage.dart';
+import 'package:studentcompass/screen/SignIn_page/Signin.dart';
 import 'package:studentcompass/services/firebaseservices.dart';
 
 class MyHomePage extends StatefulWidget {

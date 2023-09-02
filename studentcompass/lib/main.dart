@@ -1,8 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:studentcompass/screen/SignIn_page/signin.dart';
 import 'package:studentcompass/screen/splash.dart';
 import 'home_page.dart';
-import 'screen/Map_page/map_page.dart';
+import 'screen/Map_page/MapPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,11 +19,11 @@ class StartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/map',
+      initialRoute: '/signin',
       routes: {
-        '/': (context) => const MapPage(),
+        '/signin': (context) => const Signin(),
         '/map': (context) => const MapPage(),
-        // '/home_page': (context) => const MyHomePage(),
+        '/home_page': (context) => const MyHomePage(),
         // edit in routes to add pages in the project
       },
     );

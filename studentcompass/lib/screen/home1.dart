@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:studentcompass/screen/drop_down.dart';
 import '../services/firebaseservices.dart';
-import 'SignIn_page/signin.dart';
+import 'SignIn_page/Signin.dart';
 
 class Home1 extends StatefulWidget {
   const Home1({super.key});

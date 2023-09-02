@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:studentcompass/screen/SignIn_page/signin.dart';
+import 'package:studentcompass/screen/SignIn_page/Signin.dart';
 
 class Splashser {
   void islogin(BuildContext context) {
