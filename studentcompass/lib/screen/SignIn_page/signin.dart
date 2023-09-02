@@ -4,20 +4,15 @@
 import 'package:flutter/material.dart';
 import 'package:studentcompass/screen/SignIn_page/components/SignInOptions.dart';
 import 'package:studentcompass/screen/drop_down.dart';
-import 'package:studentcompass/screen/home1.dart';
-import 'package:studentcompass/reusewidgets/reuse.dart';
-import 'package:studentcompass/screen/signupppppp.dart';
 import '../../services/firebaseservices.dart';
 
 import '../../reusewidgets/ReuableButton.dart';
 import '../../reusewidgets/ReusableTextField.dart';
 
 import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 import '../../schema/userSchema/User.dart';
-import '../../schema/userSchema/createUser.dart';
+import '../../schema/userSchema/signinUser.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});
@@ -27,9 +22,19 @@ class Signin extends StatefulWidget {
 }
 
 class _SigninState extends State<Signin> {
-  Future<User>? _futureUser;
+  User _futureUser = User(id: 0, name: "", email: "", accessToken: "");
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _emailTextController = TextEditingController();
+
+  void regesterUser() async {
+    _futureUser = await signinUser(
+        email: _emailTextController.text,
+        password: _passwordTextController.text);
+    setState(() {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const DropdownButtonApp()));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +123,7 @@ class _SigninState extends State<Signin> {
                     //       MaterialPageRoute(
                     //           builder: (context) => const DropdownButtonApp()));
                     // });
+                    regesterUser();
                   }),
               SignInOptions(),
               const SizedBox(

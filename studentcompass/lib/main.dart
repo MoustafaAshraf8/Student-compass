@@ -20,12 +20,12 @@ class StartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/drop_down',
+      initialRoute: '/signin',
       routes: {
         '/signin': (context) => const Signin(),
         '/map': (context) => const MapPage(),
         '/home_page': (context) => const MyHomePage(),
-        '/drop_down': (context) => const DropdownButtonExample(),
+        //'/drop_down': (context) => const DropdownButtonExample(),
         // edit in routes to add pages in the project
       },
     );
