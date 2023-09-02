@@ -14,7 +14,8 @@ export class StudentController{
          universityId: req.body.universityId == undefined ? 1 : Number(req.body.universityId)
       }
 
-       let answer = await StudentService.signUp(userInfo);
+      let answer = await StudentService.signUp(userInfo);
+      console.log(answer[0].accessToken);
       res.statusCode = 200;
       res.json(answer);
    }
