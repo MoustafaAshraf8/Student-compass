@@ -16,7 +16,7 @@ export class JwtClass {
     let refreshToken = jwt.sign(
       { id },
       String(process.env.REFRESH_TOKEN_SECRET),
-      { expiresIn: "1h" }
+      { expiresIn: "365d" }
     );
     return refreshToken;
   }

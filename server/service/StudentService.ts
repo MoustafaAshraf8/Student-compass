@@ -27,4 +27,10 @@ export class StudentService{
       let result = await User.rentPlace(studentId, placeId);
       return result;
    }
+
+   static async updateUniversity(userId:number, universityId:number){
+      let result: String = await User.updateUniversity(userId, universityId);
+      return result;
+   }
+
 }

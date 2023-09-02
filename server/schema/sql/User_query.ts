@@ -46,5 +46,14 @@ export class UserQuery{
       return query;
    }
 
+   public static updateUniversityQuery(userid:number, universityid:number){
+
+      const query = `update client
+      set universityid=${universityid}
+      where pid=${userid};`;
+
+      return query;
+   }
+
 
 }

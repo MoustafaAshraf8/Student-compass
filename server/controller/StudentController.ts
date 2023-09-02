@@ -39,4 +39,14 @@ export class StudentController{
       let result = await StudentService.rentPlace(studentId, placeId);
       res.json(result);
    }
+
+   static async updateUniversity(req:Request, res:Response, next:NextFunction){
+      const userid = Number(req.headers['user']);
+      const universityid = Number(req.body.universityid);
+      let result = await StudentService.updateUniversity(userid, universityid);
+      res.statusCode = 200;
+      res.json(result);
+   }
+
+
 }

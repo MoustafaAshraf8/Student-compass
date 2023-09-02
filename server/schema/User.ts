@@ -73,4 +73,18 @@ export class User{
       }
    }
 
+   public static async updateUniversity(userid:number, universityid:number){
+      const query = UserQuery.updateUniversityQuery(userid, universityid);
+      try{
+         console.log(query);
+         let result = await pool.query(query);
+         console.log(result);
+         return JSON.stringify(result);
+      }catch(error){
+         throw error;
+      }
+   }
+
+
+
 }
