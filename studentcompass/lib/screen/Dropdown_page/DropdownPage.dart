@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../schema/universitySchema/University.dart';
 import '../../schema/universitySchema/getUniversity.dart';
 import 'DropdownMenuWidget.dart';
+import '../../schema/userSchema/updateUniversityUser.dart';
 
 /// Flutter code sample for [DropdownButton].
 
@@ -35,6 +36,8 @@ class _DropdownPageState extends State<DropdownPage> {
     // await updateUniversityUser(university.id);
     // Navigator.push(
     //     context, MaterialPageRoute(builder: (context) => const MyHomePage()));
+    bool answer = await updateUniversityUser(
+        universityid: universityMap[universityName]!.id);
     print(universityName);
   }
 
