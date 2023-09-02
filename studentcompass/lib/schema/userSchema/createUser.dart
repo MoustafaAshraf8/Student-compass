@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import 'User.dart';
 import 'package:dio/dio.dart';
 
@@ -42,10 +43,13 @@ Future<User> createUser(
           id: u['person_id'],
           name: u['person_name'],
           email: u['person_email'],
+          accessToken: u['access_token'],
         );
         users.add(user);
       }
-      print(users);
+      print(users[0].accessToken);
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString('accessToken', users[0].accessToken);
       return users[0];
     } else {
       // If the server did not return a 201 CREATED response,
