@@ -13,16 +13,9 @@ export class StudentController{
          password:req.body.password,
          universityId: req.body.universityId == undefined ? 1 : Number(req.body.universityId)
       }
-       console.log(userInfo);
-       let answer =await StudentService.signUp(userInfo);
-       if(Array(answer)[0].id){
 
-         //generate jwt
-          res.statusCode = 200;
-         }else{
-            res.statusCode = 401
-         }
-      console.log(answer);
+       let answer = await StudentService.signUp(userInfo);
+      res.statusCode = 200;
       res.json(answer);
    }
 

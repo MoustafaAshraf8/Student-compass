@@ -6,6 +6,8 @@ export class UniversityController{
 
    static async getUniversity(req:Request,res:Response,next:NextFunction){
       let result = await UniversityService.getAllUniversity();
+      console.log(result[0].university_name);
+      res.statusCode = 200;
       res.json(result);
    }
 

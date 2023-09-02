@@ -5,10 +5,10 @@ create table pharmacy
    constraint pk_pid_pharmacy primary key (pid)
 );
 
-insert into pharmacy
-(pid)
-values
-(9),
-(10),
-(11),
-(12);
+-- insert into pharmacy
+-- (pid)
+-- values
+-- (9),
+-- (10),
+-- (11),
+-- (12);

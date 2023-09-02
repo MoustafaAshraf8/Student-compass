@@ -10,13 +10,13 @@ create table rentalhome
    constraint pk_pid_rental primary key (pid)
 );
 
-insert into rentalhome
-(pid,space,room,price_per_night,duration,available)
-values
-(1,1,1,200,3,true),
-(2,1,1,200,3,true),
-(3,1,1,200,3,true),
-(4,1,1,200,3,true);
+-- insert into rentalhome
+-- (pid,space,room,price_per_night,duration,available)
+-- values
+-- (1,1,1,200,3,true),
+-- (2,1,1,200,3,true),
+-- (3,1,1,200,3,true),
+-- (4,1,1,200,3,true);
 
 
 -- insert into university
