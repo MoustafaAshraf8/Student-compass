@@ -23,15 +23,11 @@ export class StudentController{
    static async signIn(req:Request, res:Response, next:NextFunction){
       //console.log(req.body);
       let userInfo:SignIn_interface = {
-         email: req.body.username,
+         email: req.body.email,
          password: req.body.password
       }
-      let answer:Object = await StudentService.signIn(userInfo);
-      if(Object(answer).id){
-         res.statusCode = 200;
-      }else{
-         res.statusCode = 403
-      }
+      let answer = await StudentService.signIn(userInfo);
+     
       console.log(answer);
       res.json(answer);
    }

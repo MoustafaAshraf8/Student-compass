@@ -23,11 +23,25 @@ export class UserQuery{
       return query;
    }
    
-   public static signinQuery(email:string, password:string){
-      const query = `select *
+   public static signinQuery(email:string){
+      // const query = `select *
+      // from person
+      // inner join client on person.id=client.pid
+      // where person.email='${email}' and person.password='${password}';`;
+
+      let query = `select
+      person.id as person_id,
+      person.name as person_name,
+      person.email as person_email,
+      person.password as person_password
+      
       from person
-      inner join client on person.id=client.pid
-      where person.email='${email}' and person.password='${password}';`;
+      inner join client
+      on person.id=client.pid
+      where person.email='${email}';`;
+
+      // client.universityId as client_universityId,
+      // client.rentalId as client_rentalId
 
       return query;
    }

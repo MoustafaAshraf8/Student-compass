@@ -22,6 +22,12 @@ export class User{
 
    public async signup() {
       this.password = await Encryptor.hashPassword(this.password);
+      console.log('**********************');
+      console.log(this.password);
+      console.log('**********************');
+      console.log('**********************');
+      console.log(this.password);
+      console.log('**********************');
       const query = UserQuery.signupQuery(this.name, this.email, this.password);
       try{
          let result = await pool.query(query);
@@ -35,19 +41,25 @@ export class User{
    }
 
    public static async signin(user:SignIn_interface) {
-      
-      let query = UserQuery.signinQuery(user.email, user.password);
+      let email = user.email;
+      let query = UserQuery.signinQuery(email);
 
       try{
-         let answer = await pool.query(query);
-         console.log('##############');
-         console.log(answer);
-         console.log('##############');
-         return answer.rows[0];
+         let arrUser = await pool.query(query);
+         console.log(arrUser.rows);
+         let success = await Encryptor.verifyPassword(
+            user.password,
+            await arrUser.rows[0].person_password
+          );
+          if(success){
+             let selectResult = JSON.stringify(arrUser.rows);
+             console.log(selectResult);
+             return selectResult
+          }else{
+            throw new Error("Wrong password");
+          }
       }catch(error){
-         return {
-            msg:error
-         }
+         throw error;
       }
    }
 

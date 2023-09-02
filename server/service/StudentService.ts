@@ -16,7 +16,10 @@ export class StudentService{
 
    static async signIn(userInfo:SignIn_interface){
       let result = await User.signin(userInfo);
-      return result;
+      let parsedUser = Parser.userParser(result);
+      let accessToken = JwtClass.createAccessToken(parsedUser[0].person_id);
+      parsedUser[0].accessToken = accessToken;
+      return parsedUser;
    }
 
    static async rentPlace(studentId:number, placeId:number){

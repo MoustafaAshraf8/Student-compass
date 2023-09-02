@@ -63,13 +63,12 @@ export class Parser{
             person_id: parsed[i].person_id,
             person_name: parsed[i].person_name,
             person_email: parsed[i].person_email,
-            client_universityid: parsed[i].client_universityid,
-            client_rentalid: parsed[i].client_rentalid
+            // client_universityid: parsed[i].client_universityid,
+            // client_rentalid: parsed[i].client_rentalid
          }
          result.push(user);
       }
       return result;
    }
-
 
 }
