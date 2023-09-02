@@ -1,10 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:studentcompass/screen/SignIn_page/signin.dart';
-import 'package:studentcompass/screen/splash.dart';
 import 'home_page.dart';
 import 'screen/Map_page/MapPage.dart';
-import './screen/drop_down.dart';
+import 'screen/Dropdown_page/DropdownPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,12 +19,15 @@ class StartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/signin',
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+      ),
+      initialRoute: '/dropDown',
       routes: {
         '/signin': (context) => const Signin(),
         '/map': (context) => const MapPage(),
         '/home_page': (context) => const MyHomePage(),
-        //'/drop_down': (context) => const DropdownButtonExample(),
+        '/dropDown': (context) => DropdownPage(),
         // edit in routes to add pages in the project
       },
     );

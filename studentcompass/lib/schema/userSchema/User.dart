@@ -3,7 +3,6 @@ class User {
   String name;
   String email;
   String accessToken;
-
   User(
       {required this.id,
       required this.name,

@@ -18,8 +18,8 @@ double calculateDistance(lat1, lon1, lat2, lon2) {
 HashSet<Marker> makeMarkers(List<Place> places, double uniLat, double uniLong,
     BuildContext context, BitmapDescriptor icon) {
   print("!!!!!!!!!!!!");
-  //print(places[0].longtitude);
-  //print(places[0].latitude);
+  // print(places[0].longtitude);
+  // print(places[0].latitude);
   print("!!!!!!!!!!!!");
   // Future.delayed(Duration(seconds: 10), () {
   //   print("Wait for 10 seconds");

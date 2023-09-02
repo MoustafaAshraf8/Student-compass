@@ -1,11 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:http/http.dart' as http;
-//import 'package:studentcompass/screen/Map_page/map_classes.dart';
 import 'package:dio/dio.dart';
-// import './RentalHome.dart';
-
 import '../../screen/Map_page/map_classes.dart';
 
 Future<List<Resto>> getRestaurant() async {
@@ -14,13 +10,10 @@ Future<List<Resto>> getRestaurant() async {
     dio.options.responseType = ResponseType.plain;
     final response = await dio.get('http://10.0.2.2:80/place/restaurant');
 
-    // print(response.statusCode);
-    // print(response.data);
     if (response.statusCode == 200) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       var jsonResponse = jsonDecode(response.data);
-      //print(jsonResponse);
       List<Resto> restaurants = [];
       for (var restaurant in jsonResponse) {
         Resto resto = Resto(
@@ -34,7 +27,7 @@ Future<List<Resto>> getRestaurant() async {
           longtitude: (restaurant['place_longtitude']).toDouble(),
           latitude: (restaurant['place_latitude']).toDouble(),
         );
-
+        print(resto.name);
         restaurants.add(resto);
       }
       print(restaurants);
@@ -46,7 +39,6 @@ Future<List<Resto>> getRestaurant() async {
       throw Exception('Failed to retrieve restaurants.');
     }
   } catch (e) {
-    print("*****************");
     print(e);
     throw Exception('Failed to load restaurants');
   }

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../schema/userSchema/signinUser.dart';
 
 class FireBaseServices {
   final _auth = FirebaseAuth.instance;
@@ -17,6 +18,10 @@ class FireBaseServices {
             idToken: googleSignInAuthentication.idToken);
         await _auth.signInWithCredential(authCredential);
       }
+
+      // var email = googleSignInAccount!.email;
+      // var name = googleSignInAccount!.displayName;
+      // signinUser(email: email, password: "");
     } on FirebaseAuthException catch (e) {
       // ignore: use_rethrow_when_possible
       throw e;
