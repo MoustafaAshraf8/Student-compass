@@ -3,6 +3,7 @@ import '../../schema/universitySchema/University.dart';
 import '../../schema/universitySchema/getUniversity.dart';
 import 'DropdownMenuWidget.dart';
 import '../../schema/userSchema/updateUniversityUser.dart';
+import '../../home_page.dart';
 
 /// Flutter code sample for [DropdownButton].
 
@@ -16,7 +17,7 @@ class DropdownPage extends StatefulWidget {
 class _DropdownPageState extends State<DropdownPage> {
   List<University> universitylist = [];
   Map<String, University> universityMap = {};
-
+  bool isLoading = false;
   void initState() {
     super.initState();
     getAllUniversity();
@@ -34,10 +35,11 @@ class _DropdownPageState extends State<DropdownPage> {
   void chooseUniversity(String universityName) async {
     // University university = universityMap[universityName]!;
     // await updateUniversityUser(university.id);
-    // Navigator.push(
-    //     context, MaterialPageRoute(builder: (context) => const MyHomePage()));
+
     bool answer = await updateUniversityUser(
         universityid: universityMap[universityName]!.id);
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const MyHomePage()));
     print(universityName);
   }
 

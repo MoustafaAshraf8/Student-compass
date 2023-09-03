@@ -11,7 +11,7 @@ Future<bool> updateUniversityUser({required int universityid}) async {
     final accessToken = prefs.getString('accessToken') ?? '';
     final dio = Dio();
     dio.options.responseType = ResponseType.plain;
-    dio.options.headers["authorization"] = "bearer $defaultToken";
+    dio.options.headers["authorization"] = "bearer $accessToken";
     final response = await dio.patch('http://10.0.2.2:80/student/university',
         data: {"universityid": universityid});
 

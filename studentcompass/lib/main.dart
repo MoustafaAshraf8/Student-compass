@@ -22,7 +22,7 @@ class StartWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      initialRoute: '/dropDown',
+      initialRoute: '/signin',
       routes: {
         '/signin': (context) => const Signin(),
         '/map': (context) => const MapPage(),

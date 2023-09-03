@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:studentcompass/reusewidgets/ReuableButton.dart';
+import 'package:studentcompass/screen/Dropdown_page/DropdownPage.dart';
 import 'package:studentcompass/screen/SignIn_page/Signin.dart';
 import '../../Map_page/MapPage.dart';
 import '../../../reusewidgets/reuse.dart';
@@ -29,6 +30,8 @@ class _SignUpState extends State<SignUp> {
           name: _nameTextController.text,
           email: _emailTextController.text,
           password: _passwordTextController.text);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => DropdownPage()));
     });
   }
 
