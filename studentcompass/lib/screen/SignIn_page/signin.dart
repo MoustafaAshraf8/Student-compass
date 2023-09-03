@@ -39,7 +39,7 @@ class _SigninState extends State<Signin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Theme.of(context).primaryColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(

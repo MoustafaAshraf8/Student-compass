@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 500,
                   height: 200,
                   decoration: BoxDecoration(
-                    color: const Color(0xff7f2096),
+                    color: Theme.of(context).primaryColor,
                     //shape: BoxShape.rectangle,
                     borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(20.0),
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           child: Align(
                             alignment: Alignment(-0.8, 0.0),
                             child: Text(
@@ -106,54 +106,54 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 40, 10, 0),
-                          child: TextField(
-                            controller: TextEditingController(),
-                            obscureText: false,
-                            textAlign: TextAlign.start,
-                            maxLines: 1,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              fontSize: 14,
-                              color: Color(0xff000000),
-                            ),
-                            decoration: InputDecoration(
-                              disabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40.0),
-                                borderSide: const BorderSide(
-                                    color: Color(0xff000000), width: 1),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40.0),
-                                borderSide: const BorderSide(
-                                    color: Color(0xff000000), width: 1),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40.0),
-                                borderSide: const BorderSide(
-                                    color: Color(0xff000000), width: 1),
-                              ),
-                              hintText: "Search",
-                              hintStyle: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 14,
-                                color: Color(0xff000000),
-                              ),
-                              filled: true,
-                              fillColor: const Color(0xfff2f2f3),
-                              isDense: false,
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(12, 8, 12, 8),
-                              prefixIcon: const Icon(Icons.search,
-                                  color: Color(0xff212435), size: 24),
-                              suffixIcon: const Icon(Icons.keyboard_voice,
-                                  color: Color(0xff212435), size: 24),
-                            ),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.fromLTRB(10, 40, 10, 0),
+                        //   // child: TextField(
+                        //   //   controller: TextEditingController(),
+                        //   //   obscureText: false,
+                        //   //   textAlign: TextAlign.start,
+                        //   //   maxLines: 1,
+                        //   //   style: const TextStyle(
+                        //   //     fontWeight: FontWeight.w400,
+                        //   //     fontStyle: FontStyle.normal,
+                        //   //     fontSize: 14,
+                        //   //     color: Color(0xff000000),
+                        //   //   ),
+                        //   //   decoration: InputDecoration(
+                        //   //     disabledBorder: OutlineInputBorder(
+                        //   //       borderRadius: BorderRadius.circular(40.0),
+                        //   //       borderSide: const BorderSide(
+                        //   //           color: Color(0xff000000), width: 1),
+                        //   //     ),
+                        //   //     focusedBorder: OutlineInputBorder(
+                        //   //       borderRadius: BorderRadius.circular(40.0),
+                        //   //       borderSide: const BorderSide(
+                        //   //           color: Color(0xff000000), width: 1),
+                        //   //     ),
+                        //   //     enabledBorder: OutlineInputBorder(
+                        //   //       borderRadius: BorderRadius.circular(40.0),
+                        //   //       borderSide: const BorderSide(
+                        //   //           color: Color(0xff000000), width: 1),
+                        //   //     ),
+                        //   //     hintText: "Search",
+                        //   //     hintStyle: const TextStyle(
+                        //   //       fontWeight: FontWeight.w400,
+                        //   //       fontStyle: FontStyle.normal,
+                        //   //       fontSize: 14,
+                        //   //       color: Color(0xff000000),
+                        //   //     ),
+                        //   //     filled: true,
+                        //   //     fillColor: const Color(0xfff2f2f3),
+                        //   //     isDense: false,
+                        //   //     contentPadding:
+                        //   //         const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                        //   //     prefixIcon: const Icon(Icons.search,
+                        //   //         color: Color(0xff212435), size: 24),
+                        //   //     suffixIcon: const Icon(Icons.keyboard_voice,
+                        //   //         color: Color(0xff212435), size: 24),
+                        //   //   ),
+                        //   // ),
+                        // ),
                       ],
                     ),
                   ),

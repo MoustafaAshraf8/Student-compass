@@ -38,13 +38,13 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         title: const Text(
           "Sign Up",
           style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 15,
       ),
       body: Padding(

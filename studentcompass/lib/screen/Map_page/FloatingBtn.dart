@@ -9,7 +9,7 @@ class FloatingBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Theme.of(context).primaryColor,
           shape: const CircleBorder(),
           padding: const EdgeInsets.all(14) // Background color
           ),

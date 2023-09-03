@@ -4,6 +4,7 @@ import 'package:studentcompass/screen/SignIn_page/signin.dart';
 import 'home_page.dart';
 import 'screen/Map_page/MapPage.dart';
 import 'screen/Dropdown_page/DropdownPage.dart';
+import '../screen/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,12 +20,13 @@ class StartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.blueGrey,
       ),
-      initialRoute: '/signin',
+      initialRoute: '/',
       routes: {
-        '/signin': (context) => const Signin(),
+        '/': (context) => const Splash(),
         '/map': (context) => const MapPage(),
         '/home_page': (context) => const MyHomePage(),
         '/dropDown': (context) => DropdownPage(),

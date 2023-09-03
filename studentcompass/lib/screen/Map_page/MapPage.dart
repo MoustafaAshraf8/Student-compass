@@ -80,8 +80,9 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: const Text("MAAAAAAAP NOT FINAAAL"),
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Text("Map"),
+        centerTitle: true,
       ),
       body: Stack(
         children: [
