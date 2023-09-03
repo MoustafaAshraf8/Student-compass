@@ -5,10 +5,10 @@ create table supply
    constraint pk_pid_supply primary key (pid)
 );
 
--- insert into supply
--- (pid)
--- values
--- (17),
--- (18),
--- (19),
--- (20);
+insert into supply
+(pid)
+values
+(17),
+(18),
+(19),
+(20);

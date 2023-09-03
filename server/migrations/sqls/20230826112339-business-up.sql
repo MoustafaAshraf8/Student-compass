@@ -4,10 +4,10 @@ create table business
    constraint pk_pid_business primary key (pid)
 );
 
--- insert into business
--- (pid)
--- values
--- (4),
--- (5),
--- (6),
--- (7);
+insert into business
+(pid)
+values
+(400),
+(500),
+(600),
+(700);

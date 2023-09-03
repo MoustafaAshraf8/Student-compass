@@ -7,13 +7,11 @@ create table person
    constraint pk_id_person primary key (id)
 );
 
--- insert into person
--- (id, name, email, password)
--- values
--- (1,'name1', 'name1@gmail.com', 'test'),
--- (2,'name2', 'name2@gmail.com', 'test'),
--- (3,'name3', 'name3@gmail.com', 'test'),
--- (4,'name4', 'name4@gmail.com', 'test'),
--- (5,'name5', 'name5@gmail.com', 'test'),
--- (6,'name6', 'name6@gmail.com', 'test'),
--- (7,'name7', 'name7@gmail.com', 'test');
+insert into person
+(id, name, email, password)
+values
+
+(400,'business400', 'business400@gmail.com', 'test'),
+(500,'business500', 'business500@gmail.com', 'test'),
+(600,'business600', 'business600@gmail.com', 'test'),
+(700,'business700', 'business700@gmail.com', 'test');
