@@ -73,24 +73,24 @@ class _SignUpState extends State<SignUp> {
                     fontSize: 20),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(10),
-              child: const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Full name',
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: Colors.grey,
-                  ),
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                  ),
-                ),
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+            // Container(
+            //   padding: const EdgeInsets.all(10),
+            //   child: const TextField(
+            //     decoration: InputDecoration(
+            //       border: OutlineInputBorder(),
+            //       labelText: 'Full name',
+            //       prefixIcon: Icon(
+            //         Icons.person,
+            //         color: Colors.grey,
+            //       ),
+            //       labelStyle: TextStyle(
+            //         color: Colors.white,
+            //         fontSize: 15,
+            //       ),
+            //     ),
+            //     style: TextStyle(color: Colors.white),
+            //   ),
+            // ),
             Container(
               padding: const EdgeInsets.all(10),
               child: reusableTextField(

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:studentcompass/screen/Map_page/MapPage.dart';
 import 'SignIn_page/Signin.dart';
 import '/services/splashser.dart';
+import '../screen/Dropdown_page/DropdownPage.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -20,11 +23,10 @@ class _SplashState extends State<Splash> {
 
   void gosign() async {
     await Future.delayed(const Duration(milliseconds: 1));
+    final prefs = await SharedPreferences.getInstance();
     () {
       Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => Signin()),
-      );
+          context, MaterialPageRoute(builder: (context) => Signin()));
     };
   }
 

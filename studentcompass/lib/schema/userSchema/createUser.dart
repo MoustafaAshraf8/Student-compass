@@ -29,7 +29,6 @@ Future<User> createUser(
         stdout.write(user.name);
         users.add(user);
       }
-      print(users[0].accessToken);
       final prefs = await SharedPreferences.getInstance();
       prefs.setString('accessToken', users[0].accessToken);
       return users[0];

@@ -22,7 +22,7 @@ class StartWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.deepPurple,
       ),
       initialRoute: '/',
       routes: {
