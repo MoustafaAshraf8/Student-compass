@@ -11,7 +11,7 @@ export class StudentController{
          name:req.body.name,
          email:req.body.email,
          password:req.body.password,
-         universityId: req.body.universityId == undefined ? 1 : Number(req.body.universityId)
+         universityId: req.body.universityId == null ? 1 : Number(req.body.universityId)
       }
 
       let answer = await StudentService.signUp(userInfo);
@@ -21,7 +21,6 @@ export class StudentController{
    }
 
    static async signIn(req:Request, res:Response, next:NextFunction){
-      //console.log(req.body);
       let userInfo:SignIn_interface = {
          email: req.body.email,
          password: req.body.password

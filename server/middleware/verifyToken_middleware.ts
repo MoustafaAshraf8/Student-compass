@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { JwtClass } from "../utilities/JWT_Class.js";
+import { JwtClass } from "../utilities/JwtClass.js";
 
 export function verifyAccessToken(req: Request, res: Response, next: NextFunction) {
   const authHeader: string | undefined = req.headers["authorization"];

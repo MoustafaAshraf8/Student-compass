@@ -24,11 +24,6 @@ export class UserQuery{
    }
    
    public static signinQuery(email:string){
-      // const query = `select *
-      // from person
-      // inner join client on person.id=client.pid
-      // where person.email='${email}' and person.password='${password}';`;
-
       let query = `select
       person.id as person_id,
       person.name as person_name,
@@ -39,9 +34,6 @@ export class UserQuery{
       inner join client
       on person.id=client.pid
       where person.email='${email}';`;
-
-      // client.universityId as client_universityId,
-      // client.rentalId as client_rentalId
 
       return query;
    }

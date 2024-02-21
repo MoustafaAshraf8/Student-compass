@@ -4,13 +4,15 @@ import { UserQuery } from './sql/User_query';
 import { SignIn_interface } from '../interface/SignIn_interface';
 import { type } from 'os';
 import { Encryptor } from '../utilities/Encryptor';
+
 export class User{
    private name:string;
    private email:string;
    private password:string;
    private universityId:number;
 
-   constructor(name:string,
+   constructor(
+      name:string,
       email:string,
       password:string,
       universityId:number){
@@ -22,12 +24,6 @@ export class User{
 
    public async signup() {
       this.password = await Encryptor.hashPassword(this.password);
-      console.log('**********************');
-      console.log(this.password);
-      console.log('**********************');
-      console.log('**********************');
-      console.log(this.password);
-      console.log('**********************');
       const query = UserQuery.signupQuery(this.name, this.email, this.password);
       try{
          let result = await pool.query(query);
@@ -84,7 +80,4 @@ export class User{
          throw error;
       }
    }
-
-
-
 }

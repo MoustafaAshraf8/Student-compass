@@ -3,7 +3,7 @@ import {User} from '../schema/User';
 import { User_interface } from '../interface/User_interface';
 import { SignIn_interface } from '../interface/SignIn_interface';
 import { Parser } from '../utilities/Parser';
-import { JwtClass } from '../utilities/JWT_Class';
+import { JwtClass } from '../utilities/JwtClass';
 export class StudentService{
    static async signUp(userInfo:User_interface){
       const newUser:User = new User(userInfo.name,userInfo.email,userInfo.password,userInfo.universityId);

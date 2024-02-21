@@ -6,7 +6,7 @@ create table place
    longtitude double precision,
    latitude double precision,
    constraint pk_id_place primary key (id),
-   constraint fk_pid_place foreign key (pid) references business(pid)
+   constraint fk_pid_place foreign key (pid) references business(pid) on delete cascade
 );
 
 

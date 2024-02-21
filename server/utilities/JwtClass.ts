@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from "express";
-// import { Error_message_Interface } from "../src/Interface/Error_message_Interface.js";
 import * as dotenv from "dotenv";
 dotenv.config();
 import jwt from "jsonwebtoken";
@@ -8,7 +7,7 @@ export class JwtClass {
     let accessToken = jwt.sign(
       { id },
       String(process.env.ACCESS_TOKEN_SECRET),
-      { expiresIn: "10m" }
+      { expiresIn: "365d" }
     );
     return accessToken;
   }
