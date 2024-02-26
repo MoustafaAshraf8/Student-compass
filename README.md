@@ -2,7 +2,7 @@
 
 ## What does it do?
 
-Student Compass is a full-stack flutter application. It allows the user (student) to do basic operations such as signup and login. He also can naigate to see all possible nearby appartments available for rent on a map.
+Student Compass is a full-stack flutter application. It allows the user (student) to do basic operations such as signup and login. He also can naigate to see all possible nearby appartments available for rent, places to buy university supplies, restaurants or even study areas on a map and know the distance between him and that place.
 
 ## Technologies used
 
