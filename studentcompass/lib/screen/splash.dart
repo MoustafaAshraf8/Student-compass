@@ -22,11 +22,11 @@ class _SplashState extends State<Splash> {
   }
 
   void gosign() async {
-    await Future.delayed(const Duration(milliseconds: 1));
+    await Future.delayed(const Duration(milliseconds: 1000));
     final prefs = await SharedPreferences.getInstance();
     () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Signin()));
+          context, MaterialPageRoute(builder: (context) => const Signin()));
     };
   }
 
